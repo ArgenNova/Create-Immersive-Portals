@@ -62,3 +62,17 @@ mandatory=true
 versionRange="${minecraft_version_range}"
 ordering="NONE"
 side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="create"
+mandatory=true
+versionRange="${create_version}"
+ordering="AFTER"
+side="SERVER"
+
+[[dependencies.${mod_id}]]
+modId="immersive_portals"
+mandatory=true
+versionRange="${portals_version}"
+ordering="AFTER"
+side="BOTH"
