@@ -19,7 +19,7 @@ public class Config
 
     // a list of strings that are treated as resource locations for levels
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> LEVEL_STRINGS = BUILDER
-            .comment("Dimensions that Create trains are not allowed to travel to/from. The End is blacklisted automatically.")
+            .comment("Dimensions that Create trains are not allowed to travel to/from.")
             .defineListAllowEmpty(Collections.singletonList("level"), () -> List.of("minecraft:the_end"), Config::validateLevelName);
 
     static final ForgeConfigSpec SPEC = BUILDER.build();

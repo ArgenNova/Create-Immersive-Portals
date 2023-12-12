@@ -1,0 +1,16 @@
+{
+    "required": true,
+    "package": "me.argennova.createportal.mixin",
+    "compatabilityLevel": "JAVA_17",
+    "mixins": [
+        "MixinPlayer",
+        "MixinPortal",
+        "MixinAbstractContraptionEntity",
+        "MixinDimensionalCarriageEntity",
+        "MixinClientTeleportationManager",
+        "MixinClientPacketListener"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}

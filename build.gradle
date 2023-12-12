@@ -1,9 +1,17 @@
+buildscript {
+    dependencies {
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    }
+}
+
 plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
 }
+
+apply plugin: 'org.spongepowered.mixin'
 
 version = mod_version
 group = mod_group_id
@@ -164,6 +172,10 @@ dependencies {
     //implementation ("blank:cloth-config-${cloth_version}-forge.jar")
 }
 
+mixin {
+    config 'createportal.mixins.json'
+}
+
 // This block of code expands all declared replace properties in the specified resource targets.
 // A missing property will result in an error. Properties are expanded using ${} Groovy notation.
 // When "copyIdeResources" is enabled, this will also run before the game launches in IDE environments.
@@ -183,14 +195,6 @@ tasks.named('processResources', ProcessResources).configure {
         expand replaceProperties + [project: project]
     }
 }
-
-//jarJar.enable()
-
-//reobf {
-//    jarJar { }
-//}
-
-//tasks.jarJar.finalizedBy('reobfJarJar')
 
 // Example for how to get properties into the manifest for reading at runtime.
 tasks.named('jar', Jar).configure {

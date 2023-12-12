@@ -7,7 +7,7 @@ import com.simibubi.create.foundation.utility.BlockFace;
 import com.simibubi.create.foundation.utility.Pair;
 
 import me.argennova.createportal.Config;
-import me.argennova.createportal.override.PortalOverrideEntity;
+import me.argennova.createportal.entity.PortalOverrideEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
@@ -21,13 +21,13 @@ import net.minecraft.world.phys.Vec3;
 import qouteall.imm_ptl.core.McHelper;
 import qouteall.imm_ptl.core.portal.Portal;
 
-public class ImmPtlPatch {
-    public static void patch() {
-        AllPortalTracks.registerIntegration(new ResourceLocation("imm_ptl_core", "nether_portal_block"), ImmPtlPatch::immPtlNether);
+public class CreateImmPtlIntegration {
+    public static void register() {
+        AllPortalTracks.registerIntegration(new ResourceLocation("imm_ptl_core", "nether_portal_block"), CreateImmPtlIntegration::immPtlNether);
     }
 
     private static Pair<ServerLevel, BlockFace> immPtlNether(Pair<ServerLevel, BlockFace> inbound) {
-        return ImmPtlPatch.immPtlPortalProvider(inbound);
+        return CreateImmPtlIntegration.immPtlPortalProvider(inbound);
     }
 
     public static Pair<ServerLevel, BlockFace> immPtlPortalProvider(Pair<ServerLevel, BlockFace> inbound) {

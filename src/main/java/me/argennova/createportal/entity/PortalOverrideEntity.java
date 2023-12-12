@@ -1,6 +1,6 @@
-package me.argennova.createportal.override;
+package me.argennova.createportal.entity;
 
-import me.argennova.createportal.CreatePortalEntry;
+import me.argennova.createportal.PortalRegister;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -21,7 +21,7 @@ import qouteall.imm_ptl.core.portal.nether_portal.BlockPortalShape;
 import qouteall.imm_ptl.core.portal.nether_portal.BreakablePortalEntity;
 
 public class PortalOverrideEntity extends BreakablePortalEntity {
-    private static EntityType<PortalOverrideEntity> entityType = PortalOverrideRegister.PORTAL_OVERRIDE.get();
+    private static EntityType<PortalOverrideEntity> entityType = PortalRegister.PORTAL_OVERRIDE.get();
 
     public PortalOverrideEntity(EntityType<?> entityType, Level world) {
         super(entityType, world);
@@ -44,20 +44,14 @@ public class PortalOverrideEntity extends BreakablePortalEntity {
             PortalOverrideEntity newOtherSide = createReversePortal(newOverride, otherFrame);
             PortalOverrideEntity newOtherFace = createFlippedPortal(newOverride);
             PortalOverrideEntity newOtherFaceSide = createReversePortal(newOtherFace, otherFrame);
-
-            CreatePortalEntry.LOGGER.info("Overriding Portal");
         
             PortalManipulation.removeConnectedPortals(portal, p -> {});
             portal.remove(RemovalReason.KILLED);
         
-            CreatePortalEntry.LOGGER.info("Still good.");
-
             McHelper.spawnServerEntity(newOverride);
             McHelper.spawnServerEntity(newOtherSide);
             McHelper.spawnServerEntity(newOtherFace);
             McHelper.spawnServerEntity(newOtherFaceSide);
-            
-            CreatePortalEntry.LOGGER.info("Portal Spawned: {}", newOverride);
 
             return newOverride;
         }
@@ -88,14 +82,6 @@ public class PortalOverrideEntity extends BreakablePortalEntity {
        newPortal.blockPortalShape = portal.blockPortalShape;
 
        return newPortal;
-    }
-
-    @Override
-    public String toString() {
-        String string = super.toString();
-        //string = string + String.format(", Portal Shape: %s", blockPortalShape);
-
-        return string;
     }
 
     @Override
