@@ -28,7 +28,7 @@ public class Config
 
     private static boolean validateLevelName(final Object obj)
     {
-        return obj instanceof final String levelName;
+        return obj instanceof String;
     }
 
     @SubscribeEvent
@@ -36,8 +36,6 @@ public class Config
     {
         // Convert strings to ResourceLocations
         blacklistedLevels = LEVEL_STRINGS.get().stream()
-                .map(levelName -> {
-                    return new ResourceLocation(levelName);
-                }).collect(Collectors.toSet());
+                .map(ResourceLocation::new).collect(Collectors.toSet());
     }
 }

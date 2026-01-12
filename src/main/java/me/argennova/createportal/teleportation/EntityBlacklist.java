@@ -7,7 +7,7 @@ import java.util.UUID;
 import net.minecraft.world.entity.Entity;
 
 public class EntityBlacklist {
-    private static Set<UUID> entityBlacklist = new HashSet<>();
+    private static final Set<UUID> entityBlacklist = new HashSet<>();
     
     public static void setEntityTeleportable(UUID uuid, boolean teleportable) {
         if (teleportable)

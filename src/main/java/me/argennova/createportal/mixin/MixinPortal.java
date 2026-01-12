@@ -12,7 +12,7 @@ import qouteall.imm_ptl.core.portal.Portal;
 @Mixin(Portal.class)
 public abstract class MixinPortal {
     @Inject(
-        method = "Lqouteall/imm_ptl/core/portal/Portal;canTeleportEntity(Lnet/minecraft/world/entity/Entity;)Z",
+        method = "canTeleportEntity(Lnet/minecraft/world/entity/Entity;)Z",
         at = @At("HEAD"),
         cancellable = true
     )

@@ -13,10 +13,7 @@ public class CreatePortalClientEntry {
     @SuppressWarnings("unchecked")
     public static void initPortalRenderer(EntityRenderersEvent.RegisterRenderers event) {
         EntityType<PortalOverrideEntity> portal = PortalRegister.PORTAL_OVERRIDE.get();
-
-        if (portal != null) {
-            event.registerEntityRenderer(portal, (EntityRendererProvider) PortalEntityRenderer::new);
-        }
+        event.registerEntityRenderer(portal, (EntityRendererProvider) PortalEntityRenderer::new);
     }
 
     public static void initialiseClient() {

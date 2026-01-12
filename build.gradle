@@ -127,17 +127,9 @@ repositories {
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
 
     // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
-    // flatDir {
-    //     dir 'libs'
-    // }
-
-    maven {
-        // location of the maven for Registrate and Flywheel
-        name = 'tterrag maven'
-        url = 'https://maven.tterrag.com'
+    flatDir {
+         dir 'libs'
     }
-
-    flatDir { dir "libs" }
 }
 
 dependencies {
@@ -163,13 +155,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
     implementation ("blank:create-${minecraft_version}-${create_version}")
-    //compileOnly (fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}"))
-    //jarJar(group: 'com.tterrag.registrate', name: 'Registrate', version: "[MC1.19,MC1.19.3)")
-    compileOnly (fg.deobf("com.jozufozu.flywheel:flywheel-forge-${minecraft_version}:${flywheel_version}"))
-    //implementation (fg.deobf("com.simibubi:create:${minecraft_version}~${create_version}"))
     implementation ("blank:immersive-portals-${portals_version}-mc${minecraft_version}-forge")
-    //implementation (fg.deobf("qouteall.imm_ptl.peripheral:immersive-portals:${portals_version}-mc${minecraft_version}-forge"))
-    //implementation ("blank:cloth-config-${cloth_version}-forge.jar")
 }
 
 mixin {

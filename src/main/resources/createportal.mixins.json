@@ -6,9 +6,7 @@
         "MixinPlayer",
         "MixinPortal",
         "MixinAbstractContraptionEntity",
-        "MixinDimensionalCarriageEntity",
-        "MixinClientTeleportationManager",
-        "MixinClientPacketListener"
+        "MixinDimensionalCarriageEntity"
     ],
     "injectors": {
         "defaultRequire": 1

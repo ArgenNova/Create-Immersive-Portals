@@ -9,8 +9,8 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.NetworkEvent.Context;
 
 public class EntityBlacklistUpdatePacket {
-    private UUID uuid;
-    private boolean remove;
+    private final UUID uuid;
+    private final boolean remove;
 
     public EntityBlacklistUpdatePacket(UUID uuid, boolean remove) {
         this.uuid = uuid;
@@ -28,9 +28,7 @@ public class EntityBlacklistUpdatePacket {
     }
 
     public void handle(Context context) {
-        context.enqueueWork(() -> {
-            EntityBlacklist.setEntityTeleportable(uuid, remove);
-        });
+        context.enqueueWork(() -> EntityBlacklist.setEntityTeleportable(uuid, remove));
         context.setPacketHandled(true);
     }
 
