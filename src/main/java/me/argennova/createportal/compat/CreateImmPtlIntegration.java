@@ -21,15 +21,20 @@ import net.minecraft.world.phys.Vec3;
 import qouteall.imm_ptl.core.McHelper;
 import qouteall.imm_ptl.core.portal.Portal;
 
+// Allows create to understand how to place tracks through immersive portals
 public class CreateImmPtlIntegration {
+
+    // Register immersive portals' portal block as valid portal for train tracks
     public static void register() {
-        AllPortalTracks.registerIntegration(new ResourceLocation("imm_ptl_core", "nether_portal_block"), CreateImmPtlIntegration::immPtlNether);
+        AllPortalTracks.registerIntegration(new ResourceLocation("imm_ptl_core", "nether_portal_block"), CreateImmPtlIntegration::immPtlDestination);
     }
 
-    private static Pair<ServerLevel, BlockFace> immPtlNether(Pair<ServerLevel, BlockFace> inbound) {
+    // Provides the position and direction the train track should be placed on the other side of the portal
+    private static Pair<ServerLevel, BlockFace> immPtlDestination(Pair<ServerLevel, BlockFace> inbound) {
         return CreateImmPtlIntegration.immPtlPortalProvider(inbound);
     }
 
+    // Calculates the position and direction of the train track
     public static Pair<ServerLevel, BlockFace> immPtlPortalProvider(Pair<ServerLevel, BlockFace> inbound) {
 		ServerLevel level = inbound.getFirst();
 		MinecraftServer server = level.getServer();
